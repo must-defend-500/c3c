@@ -1,0 +1,35 @@
+=======================================
+									  =
+***Test Pool NAME***				  =
+test-pool							  =
+									  =					
+***Test Pool ID***					  =
+us-east-1_G6V4f8rj7					  =
+									  =
+--------------------------------------=
+									  =
+***App Client Name***				  =
+test-app							  =
+									  =
+***App Client ID***					  =
+rh72ativqs7hrql5gj2m20ohv			  =
+									  =
+=======================================
+
+=======================================
+									  =
+***Test Pool NAME***				  =
+test-pool2							  =
+									  =					
+***Test Pool ID***					  =
+us-east-1_6BtY82EfC					  =
+									  =
+--------------------------------------=
+									  =
+***App Client Name***				  =
+test-app2							  =
+									  =
+***App Client ID***					  =
+6heg0pgol84lfctc666063q3rv			  =
+									  =
+=======================================

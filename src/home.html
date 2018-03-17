@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <!-- https://getbootstrap.com/docs/4.0/examples/carousel/ -->
+    <!-- TEMPLATE FOR THIS PAGE -->
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <!-- style sheet for carousel -->
+    <link href="carousel.css" rel="stylesheet">
+
+    <!-- cognito dependencies -->
+    <script src="../scripts/aws-cognito-sdk.min.js"></script>
+    <script src="../scripts/amazon-cognito-identity.min.js"></script>
+
+    <title>c2c.io</title>
+
+    <style>
+      #menuModalDialog{
+      margin:0;
+      position: fixed;
+      top:0;
+      bottom:0;
+      right: 0;
+      background: #fff;
+      width:20%;
+      overflow-y: auto;
+    }
+</style>
+
+  </head>
+  <body>
+
+
+
+
+<header>
+<!--   to have no navbar with scroll just don't set the background color -->
+<!--   <nav class="navbar navbar-light fixed-top flex-row-reverse bg-white"> -->
+  <nav class="navbar navbar-light fixed-top flex-row-reverse bg-dark bg-gradient-light" style="opacity: 0.6;"">
+    <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#menuModal" style="border:none;">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</header>
+
+
+
+<!-- Menu Modal -->
+<div class="modal fade" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+  <div id="menuModalDialog" class="modal-dialog" role="document">
+    <div class="modal-content" style="border:none;">
+      <div class="modal-header" style="border:none;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div style="padding-top:20px;">
+        <p style="padding-left:10px;"><a href="#" style="color:inherit;" onclick="showLoginModal()">LOGIN / SIGN-UP</a></p>
+        <p style="padding-left:10px;"><a href="#about" style="color:inherit;" onclick="closeMenuModal()">ABOUT</a></p>
+        <p style="padding-left:10px;"><a href="#pricing" style="color:inherit;" onclick="closeMenuModal()">PRICING</a></p>
+      </div>
+  
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <!-- <div class="modal-dialog modal-dialog-centered" role="document"> -->   <!-- THIS CENTERS THE MODAL -->
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" style="border:none;">
+      <div class="modal-header" style="border:none;">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">SIGN-UP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">LOGIN</a>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content" id="myTabContent">
+          <!-- SIGNUP FORM -->
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <form class="form-signin">
+              <label for="inputEmail" class="sr-only">Email address</label>
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
+              <div class="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">SIGN-UP</button>
+            </form>
+          </div>
+          <!-- LOGIN FORM -->
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <form class="form-signin">
+              <label for="inputEmail" class="sr-only">Email address</label>
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+              <div class="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">LOGIN</button>
+            </form>  
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--         <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- CONTACT US MODAL -->
+<!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Contact Us</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Message</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<main role="main">
+
+  <div class="container" style="padding:60px 0px 0px 0px">
+      <h1 style="text-align: center;">Confirmation Code Form</h1>
+  </div>
+
+  <div class="container">
+      <h3>Current User</h3>
+      <p id="username"></p>
+  </div>
+
+
+
+</main>
+
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="float-right"><a href="#">Back to top</a></p>
+      <p>&copy; 2017 EC Solutions, LLC. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </div>
+  </footer>
+<!--       <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer> -->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script src="../scripts/app.js"></script>
+
+    <!-- cognito scripts -->
+    <script src="../scripts/app.js"></script>
+<!--     <script src="../scripts/confirmation.js"></script>
+    <script src="../scripts/session.js"></script> -->
+
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

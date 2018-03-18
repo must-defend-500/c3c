@@ -141,7 +141,9 @@ document.getElementById("login-btn").addEventListener("click", (e) => {
 	e.preventDefault();
 
 	var email = document.getElementById("inputEmailLogin").value;
-	var password = document.getElementById("inputEmailLogin").value;
+	var password = document.getElementById("inputPasswordLogin").value;
+	console.log("email: " + email);
+	console.log("password: " + password);
 	var authenticationData = {
 		Username : email,
 		Password : password
@@ -160,7 +162,7 @@ document.getElementById("login-btn").addEventListener("click", (e) => {
 
 	cognitoUser.authenticateUser(authenticationDetails, {
 		onSuccess: function (result){
-			console.log('access token + ' + result.getAccessToken.getJwtToken());
+			console.log('access token + ' + result.getAccessToken().getJwtToken());
 			window.location.replace("home.html");
 		},
 

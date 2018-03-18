@@ -173,13 +173,9 @@ document.getElementById("login-btn").addEventListener("click", (e) => {
 
 });
 
-// document.getElementById("loguot-submit-button").addEventListener("click", (e) => {
-// 	e.preventDefault();
-// 	var cognitoUser = userPool.getCurrentUser();
-// 	if(cognitoUser){
-// 		cognitoUser.signOut();
-// 	}
-// });
+
+
+//logging out user
 
 
 
